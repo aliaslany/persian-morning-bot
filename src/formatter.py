@@ -1,4 +1,4 @@
-from src.config import CHANNEL_NAME, CHANNEL_LINK
+from src.config import CHANNEL_NAME, CHANNEL_ID
 from src.dates import replace_numbers_with_persian
 
 def format_daily_message(dates, occasions, poem, greeting, weather=None, prayer_times=None):
@@ -41,8 +41,8 @@ def format_daily_message(dates, occasions, poem, greeting, weather=None, prayer_
     msg_parts.append(f"<i>{poem}</i>\n")
     
     # 7. Footer
-    msg_parts.append("🌿")
-    msg_parts.append(f"کانال: {CHANNEL_NAME}")
-    msg_parts.append(f"🔗 {CHANNEL_LINK}")
+    # msg_parts.append("🌿")
+    msg_parts.append(f" {CHANNEL_NAME}")
+    msg_parts.append(f"🔗 {CHANNEL_ID}")
     
     return "\n".join(msg_parts)
