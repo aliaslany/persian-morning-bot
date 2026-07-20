@@ -8,8 +8,8 @@ Every morning, the bot automatically sends a beautiful, structured message conta
 - 🌅 **Greeting**: A warm, welcoming daily greeting.
 - 📅 **Dates**: The current day in Jalali (Persian), Gregorian, and Hijri calendars.
 - 🎉 **Occasions**: Iranian and global occasions for the day.
-- 🌤 **Weather**: Live weather updates for Tehran (using wttr.in API).
-- 🕋 **Prayer Times**: Daily prayer times for Tehran (using Aladhan API).
+- 🌤 **Weather**: Live weather updates for Aliabad-e-Katul (using wttr.in API).
+- 🕋 **Prayer Times**: Daily prayer times for Aliabad-e-Katul (using Aladhan API).
 - 📜 **Poem of the Day**: A random Persian poem fetched live from the Ganjoor API.
 - 📸 **Beautiful Image**: A high-quality random image dynamically downloaded from Picsum.
 - 📢 **Channel Signature**: Your custom channel name and link at the bottom.
