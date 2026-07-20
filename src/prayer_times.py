@@ -1,16 +1,16 @@
 import requests
 import datetime
 
-def get_tehran_prayer_times():
+def get_aliabad_prayer_times():
     """
-    Fetches the prayer times for Tehran using Aladhan API.
+    Fetches the prayer times for Aliabad-e-Katul using Aladhan API coordinates.
     """
     try:
-        url = "https://api.aladhan.com/v1/timingsByCity"
+        url = "https://api.aladhan.com/v1/timings"
         params = {
-            "city": "Tehran",
-            "country": "Iran",
-            "method": 8 # Gulf Region or standard for Iran (often 7 or 8)
+            "latitude": 36.9080,
+            "longitude": 54.8683,
+            "method": 8 # Gulf Region or standard for Iran
         }
         response = requests.get(url, params=params, timeout=5)
         if response.status_code == 200:

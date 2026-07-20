@@ -30,7 +30,7 @@ def format_daily_message(dates, occasions, poem, greeting, weather=None, prayer_
         
     # 5. Prayer times
     if prayer_times:
-        msg_parts.append("🕋 <b>اوقات شرعی (تهران):</b>")
+        msg_parts.append("🕋 <b>اوقات شرعی (علی‌آباد کتول):</b>")
         msg_parts.append(f"اذان صبح: {replace_numbers_with_persian(prayer_times['fajr'])}")
         msg_parts.append(f"طلوع آفتاب: {replace_numbers_with_persian(prayer_times['sunrise'])}")
         msg_parts.append(f"اذان ظهر: {replace_numbers_with_persian(prayer_times['dhuhr'])}")

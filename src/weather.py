@@ -1,11 +1,11 @@
 import requests
 
-def get_tehran_weather():
+def get_aliabad_weather():
     """
-    Fetches the current weather for Tehran using wttr.in.
+    Fetches the current weather for Aliabad-e-Katul using wttr.in.
     """
     try:
-        response = requests.get("https://wttr.in/Tehran?format=3", timeout=5)
+        response = requests.get("https://wttr.in/Aliabad-e-Katul?format=3&m", timeout=5)
         if response.status_code == 200:
             return response.text.strip()
     except Exception as e:
