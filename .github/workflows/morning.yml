@@ -39,6 +39,7 @@ jobs:
           CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
           CHANNEL_NAME: ${{ secrets.CHANNEL_NAME }}
           CHANNEL_LINK: ${{ secrets.CHANNEL_LINK }}
+          PYTHONPATH: .
 
         run: |
           python src/main.py
