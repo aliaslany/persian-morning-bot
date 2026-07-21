@@ -1,91 +1,100 @@
-# Persian Morning Telegram Bot (ربات صبحانه تلگرام)
+# ربات صبح‌بخیر تلگرام 🌅
 
-A robust, fully automated Python-based Telegram bot that sends a daily morning message to your channel using GitHub Actions. It runs completely free of charge, requires no continuous server, and leverages multiple public APIs to generate rich, dynamic content every morning.
+یک ربات پایتونی کاملاً خودکار که هر روز صبح یک پیام کامل و زیبا به کانال یا گروه تلگرام شما می‌فرستد؛ با استفاده از GitHub Actions، بدون نیاز به سرور و کاملاً رایگان.
 
-## 🌟 Features
+اگر می‌خواهید نسخه‌ی این ربات را برای کانال یا کسب‌وکار خودتان سفارش بدهید، صفحه‌ی معرفی را ببینید:
+**[پیج معرفی و سفارش ربات](https://aliaslany.github.io/persian-morning-bot/)**
 
-Every morning, the bot automatically sends a beautiful, structured message containing:
-- 🌅 **Greeting**: A warm, welcoming daily greeting.
-- 📅 **Dates**: The current day in Jalali (Persian), Gregorian, and Hijri calendars.
-- 🎉 **Occasions**: Iranian and global occasions for the day.
-- 🌤 **Weather**: Live weather updates for Aliabad-e-Katul (using wttr.in API).
-- 🕋 **Prayer Times**: Daily prayer times for Aliabad-e-Katul (using Aladhan API).
-- 📜 **Poem of the Day**: A random Persian poem fetched live from the Ganjoor API.
-- 📸 **Beautiful Image**: A high-quality random image dynamically downloaded from Picsum.
-- 📢 **Channel Signature**: Your custom channel name and link at the bottom.
+*(For the English version of this document, see [README.en.md](README.en.md))*
 
-## 🏗 Architecture
+## 🌟 امکانات
 
-This project is specifically designed to run as a **serverless cron job via GitHub Actions**.
-- **No Hosting Required**: It executes once a day via `.github/workflows/morning.yml` and shuts down immediately.
-- **Resilient Content**: Uses live APIs for fresh content (Poems, Weather, Images, Prayer Times), while securely falling back to local JSON data (`data/` directory) if any API experiences downtime.
-- **Decoupled Modules**: Each feature (weather, image fetching, dates, telegram sender) is isolated in its own file under `src/` for easy customization.
+هر روز صبح، ربات یک پیام ساختاریافته و کامل شامل موارد زیر ارسال می‌کند:
+- 🌅 **خوش‌آمدگویی**: یک پیام صبح‌بخیر گرم و متفاوت هر روز.
+- 📅 **تاریخ روز**: تاریخ امروز به سه تقویم شمسی، میلادی و قمری.
+- 🎉 **مناسبت‌های روز**: مناسبت‌های ملی، مذهبی و جهانی، از یک تقویم زنده و به‌روز.
+- 🌤 **آب‌وهوا**: وضعیت آب‌وهوای زنده‌ی علی‌آباد کتول (با استفاده از سرویس wttr.in).
+- 🕋 **اوقات شرعی**: اوقات اذان روزانه برای علی‌آباد کتول (با استفاده از سرویس Aladhan).
+- 📜 **شعر روز**: یک بیت تصادفی از شاعران فارسی، مستقیم از سرویس گنجور.
+- 📸 **تصویر زیبا**: یک تصویر باکیفیت که هر روز به‌صورت خودکار از Picsum دریافت می‌شود.
+- 📢 **امضای کانال**: نام و لینک کانال شما در پایین پیام.
 
-## 🚀 Setup & Deployment
+## 🏗 معماری پروژه
 
-1. **Clone/Fork the Repository**: Create your own copy of this repository.
-2. **Add Telegram Bot Settings**: 
-   Go to your GitHub Repository -> **Settings** -> **Secrets and variables** -> **Actions** and add the following repository secrets:
-   - `BOT_TOKEN`: Your Telegram Bot API Token (from @BotFather).
-   - `CHANNEL_ID`: Your channel username (e.g., `@my_morning_channel`) or numeric ID.
-   - `CHANNEL_NAME`: The display name of your channel for the footer.
-   - `CHANNEL_LINK`: The invite link for your channel.
-3. **Add the Bot to your Channel**: Ensure your bot is added to your Telegram channel as an Administrator with permissions to *Post Messages*.
-4. **Enable Actions**: In your GitHub repository, go to the **Actions** tab and enable workflows.
+این پروژه طوری طراحی شده که به‌صورت **یک کار زمان‌بندی‌شده‌ی سرورلس روی GitHub Actions** اجرا شود:
+- **بدون نیاز به هاست**: هر روز یک‌بار از طریق فایل `.github/workflows/morning.yml` اجرا و بلافاصله بسته می‌شود.
+- **محتوای پایدار**: از سرویس‌های زنده برای محتوای تازه (شعر، آب‌وهوا، تصویر، اوقات شرعی) استفاده می‌کند و در صورت قطعی هر سرویس، به‌طور خودکار به داده‌های محلی در پوشه‌ی `data/` بازمی‌گردد.
+- **ماژول‌های مستقل**: هر بخش (آب‌وهوا، دریافت تصویر، تاریخ، ارسال به تلگرام) در فایل جداگانه‌ای زیر `src/` قرار دارد تا شخصی‌سازی آن ساده باشد.
 
-## ⏰ Schedule
+## 🚀 راه‌اندازی
 
-By default, the GitHub Action is configured to run daily at `03:30 UTC` (which corresponds to `07:00 AM` Tehran time).
-You can change this schedule by modifying the cron expression in `.github/workflows/morning.yml`:
+۱. **فورک یا کلون مخزن**: یک نسخه از این مخزن برای خودتان بسازید.
+
+۲. **افزودن تنظیمات ربات تلگرام**:
+   به مخزن گیت‌هاب خود بروید: **Settings** ← **Secrets and variables** ← **Actions** و مقادیر زیر را به‌عنوان Secret اضافه کنید:
+   - `BOT_TOKEN`: توکن ربات تلگرام شما (از @BotFather دریافت می‌شود).
+   - `CHANNEL_ID`: نام کاربری کانال شما (مثل `@my_morning_channel`) یا آیدی عددی آن.
+   - `CHANNEL_NAME`: نامی که در پایین پیام نمایش داده می‌شود.
+   - `CHANNEL_LINK`: لینک عضویت در کانال شما.
+
+۳. **افزودن ربات به کانال**: مطمئن شوید ربات را به کانالتان با نقش ادمین و دسترسی «ارسال پیام» اضافه کرده‌اید.
+
+۴. **فعال‌سازی Actions**: در تب **Actions** مخزن گیت‌هاب خود، ورک‌فلوها را فعال کنید.
+
+## ⏰ زمان‌بندی ارسال
+
+به‌صورت پیش‌فرض، این ربات هر روز ساعت `03:30 UTC` (معادل `07:00` به وقت تهران) اجرا می‌شود.
+برای تغییر زمان ارسال، عبارت cron را در فایل `.github/workflows/morning.yml` ویرایش کنید:
 ```yaml
 on:
   schedule:
     - cron: '30 3 * * *'
 ```
 
-## 🛠 Local Development
+## 🛠 اجرای محلی (برای توسعه)
 
-If you want to test the bot locally before deploying:
+اگر می‌خواهید قبل از استقرار، ربات را روی سیستم خودتان تست کنید:
 
-1. Create a Python virtual environment:
+۱. ساخت محیط مجازی پایتون:
    ```bash
    python -m venv venv
    source venv/bin/activate
    ```
-2. Install dependencies:
+۲. نصب وابستگی‌ها:
    ```bash
    pip install -r requirements.txt
    ```
-3. Create a `.env` file in the root directory:
+۳. ساخت فایل `.env` در ریشه‌ی پروژه:
    ```env
    BOT_TOKEN=123456789:YOUR_BOT_TOKEN
    CHANNEL_ID=@your_channel_username
    CHANNEL_NAME=صبحانه ایرانی
    CHANNEL_LINK=https://t.me/your_channel
    ```
-4. Run the bot:
+۴. اجرای ربات:
    ```bash
    export PYTHONPATH=.
    python src/main.py
    ```
 
-## 📂 Project Structure
+## 📂 ساختار پروژه
 
 ```text
-├── .github/workflows/    # GitHub Actions workflow
-├── data/                 # Local fallback datasets (JSON)
-│   ├── images/           # Fallback images
-│   └── ...               # occasions, greetings, poems
-├── src/                  # Source code modules
-│   ├── config.py         # Environment configuration
-│   ├── dates.py          # Calendar conversions
-│   ├── formatter.py      # Message text assembly
-│   ├── images.py         # Live image downloading (Picsum)
-│   ├── main.py           # Core orchestrator
-│   ├── occasions.py      # Holiday & occasion data
-│   ├── poems.py          # Ganjoor API fetching
-│   ├── prayer_times.py   # Aladhan API fetching
-│   ├── telegram_sender.py# Bot API communication
-│   └── weather.py        # Wttr.in API fetching
-└── requirements.txt      # Python dependencies
+├── .github/workflows/    # ورک‌فلوی GitHub Actions
+├── docs/                 # صفحه‌ی معرفی روی GitHub Pages
+├── data/                 # داده‌های جایگزین محلی (JSON)
+│   ├── images/           # تصاویر جایگزین
+│   └── ...               # مناسبت‌ها، خوش‌آمدگویی‌ها، اشعار
+├── src/                  # ماژول‌های کد اصلی
+│   ├── config.py         # تنظیمات محیطی
+│   ├── dates.py          # تبدیل تقویم‌ها
+│   ├── formatter.py      # چیدمان متن پیام
+│   ├── images.py         # دریافت تصویر زنده (Picsum)
+│   ├── main.py           # هماهنگ‌کننده‌ی اصلی
+│   ├── occasions.py      # مناسبت‌ها (زنده + جایگزین محلی)
+│   ├── poems.py          # دریافت شعر از گنجور
+│   ├── prayer_times.py   # دریافت اوقات شرعی از Aladhan
+│   ├── telegram_sender.py# ارتباط با API تلگرام
+│   └── weather.py        # دریافت آب‌وهوا از wttr.in
+└── requirements.txt      # وابستگی‌های پایتون
 ```
