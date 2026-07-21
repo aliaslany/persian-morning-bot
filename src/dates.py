@@ -62,7 +62,10 @@ def get_today_dates():
         "jalali": jalali_str,
         "gregorian": gregorian_str,
         "hijri": hijri_str,
-        "month_day_jalali": f"{today_jalali.month}-{today_jalali.day}"
+        "month_day_jalali": f"{today_jalali.month}-{today_jalali.day}",
+        "jalali_year": j_year,
+        "jalali_month": today_jalali.month,
+        "jalali_day": j_day
     }
 
 def replace_numbers_with_persian(text: str) -> str:

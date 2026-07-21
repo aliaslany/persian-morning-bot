@@ -15,8 +15,10 @@ def main():
     # 1. Get dates
     dates = get_today_dates()
     
-    # 2. Get occasions for today (Jalali month-day)
-    occasions = get_today_occasions(dates["month_day_jalali"])
+    # 2. Get occasions for today (live from API, with local fallback)
+    occasions = get_today_occasions(
+        dates["jalali_year"], dates["jalali_month"], dates["jalali_day"], dates["month_day_jalali"]
+    )
     
     # 3. Get poem (Ganjoor API)
     poem = get_random_poem()
